@@ -1,5 +1,5 @@
-# Ex04 Simple Calculator - React Project
-## Date:
+# MWAD-EXP_04-Simple-caluculator
+## Date:16.11.2025
 
 ## AIM
 To  develop a Simple Calculator using React.js with clean and responsive design, ensuring a smooth user experience across different screen sizes.
@@ -46,312 +46,109 @@ Deploy the website.
 Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
-HTML
-```
-import React, { useState } from "react";
-import { evaluate } from "mathjs"; // Install mathjs using `npm install mathjs`
-import "./App.css";
 
-const App = () => {
-  const [input, setInput] = useState("");
+App.css
 
-  const handleClick = (value) => {
-    if (value === "AC") {
-      setInput("");
-    } else if (value === "⌫") {
-      setInput(input.slice(0, -1)); // Remove the last character
-    } else if (value === "=") {
-      try {
-        setInput(evaluate(input).toString()); // Use mathjs for evaluation
-      } catch {
-        setInput("Error");
-      }
-    } else {
-      setInput(input + value);
-    }
-  };
-
-  return (
-    <div className="calculator">
-      <h1 className="title">Quick Math</h1>
-      <div className="display" aria-label="Calculator display">
-        {input || "0"}
-      </div>
-      <div className="buttons">
-        <button
-          className="btn-ac"
-          onClick={() => handleClick("AC")}
-          aria-label="Clear All"
-        >
-          AC
-        </button>
-        <button
-          className="btn-special"
-          onClick={() => handleClick("⌫")}
-          aria-label="Backspace"
-        >
-          ⌫
-        </button>
-        <button
-          className="btn-operator"
-          onClick={() => handleClick("%")}
-          aria-label="Percentage"
-        >
-          %
-        </button>
-        <button
-          className="btn-operator"
-          onClick={() => handleClick("/")}
-          aria-label="Divide"
-        >
-          /
-        </button>
-
-        <button
-          className="btn-number"
-          onClick={() => handleClick("7")}
-          aria-label="Seven"
-        >
-          7
-        </button>
-        <button
-          className="btn-number"
-          onClick={() => handleClick("8")}
-          aria-label="Eight"
-        >
-          8
-        </button>
-        <button
-          className="btn-number"
-          onClick={() => handleClick("9")}
-          aria-label="Nine"
-        >
-          9
-        </button>
-        <button
-          className="btn-operator"
-          onClick={() => handleClick("*")}
-          aria-label="Multiply"
-        >
-          *
-        </button>
-
-        <button
-          className="btn-number"
-          onClick={() => handleClick("4")}
-          aria-label="Four"
-        >
-          4
-        </button>
-        <button
-          className="btn-number"
-          onClick={() => handleClick("5")}
-          aria-label="Five"
-        >
-          5
-        </button>
-        <button
-          className="btn-number"
-          onClick={() => handleClick("6")}
-          aria-label="Six"
-        >
-          6
-        </button>
-        <button
-          className="btn-operator"
-          onClick={() => handleClick("-")}
-          aria-label="Subtract"
-        >
-          -
-        </button>
-
-        <button
-          className="btn-number"
-          onClick={() => handleClick("1")}
-          aria-label="One"
-        >
-          1
-        </button>
-        <button
-          className="btn-number"
-          onClick={() => handleClick("2")}
-          aria-label="Two"
-        >
-          2
-        </button>
-        <button
-          className="btn-number"
-          onClick={() => handleClick("3")}
-          aria-label="Three"
-        >
-          3
-        </button>
-        <button
-          className="btn-operator"
-          onClick={() => handleClick("+")}
-          aria-label="Add"
-        >
-          +
-        </button>
-
-        <button
-          className="btn-number"
-          onClick={() => handleClick("0")}
-          aria-label="Zero"
-        >
-          0
-        </button>
-        <button
-          className="btn-number"
-          onClick={() => handleClick(".")}
-          aria-label="Decimal"
-        >
-          .
-        </button>
-        <button
-          className="btn-equal"
-          onClick={() => handleClick("=")}
-          aria-label="Equals"
-        >
-          =
-        </button>
-      </div>
-
-      <footer>
-        <p>DEVELOPED BY Mohamed Athif Rahuman J</p>
-        <p>Reg No: 212223220058</p>
-      </footer>
-    </div>
-  );
-};
-
-export default App;
-```
-CSS
 ```
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  margin: 0;
-  font-family: Arial, sans-serif;
+  background: #9ebc8a;
+  font-family: Georgia;
 }
 
-.calculator {
-  background: rgba(255, 255, 255, 0.1);
+.calc {
+  background: #73946b;
   padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  width: 320px;
-  backdrop-filter: blur(10px);
-}
-
-h1 {
-  margin: 10px 0;
-  font-size: 28px;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.display {
-  background-color: #000;
-  color: #0f0;
-  width: 100%;
-  height: 60px;
-  text-align: right;
-  font-size: 24px;
   border-radius: 10px;
-  padding: 10px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  font-family: "Courier New", Courier, monospace;
-  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+#display {
+  width: 160px;
+  height: 30px;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  text-align: right;
 }
 
 button {
-  width: 100%;
-  height: 60px;
-  font-size: 20px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #ffffff, #d4d4d4);
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  font-size: 1.1em;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-button:hover {
-  background: linear-gradient(135deg, #f0f0f0, #c0c0c0);
-  transform: translateY(-2px);
-}
-
-button:active {
-  transform: scale(0.95);
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.btn-ac {
-  background: linear-gradient(135deg, #ff4b4b, #ff0000);
-  color: white;
-}
-
-.btn-ac:hover {
-  background: linear-gradient(135deg, #ff6b6b, #ff3333);
-}
-
-.btn-special {
-  background: linear-gradient(135deg, #ffa500, #ff7f00);
-  color: white;
-}
-
-.btn-special:hover {
-  background: linear-gradient(135deg, #ffb733, #ff9933);
-}
-
-.btn-operator {
-  background: linear-gradient(135deg, #4caf50, #388e3c);
-  color: white;
-}
-
-.btn-operator:hover {
-  background: linear-gradient(135deg, #66bb6a, #43a047);
-}
-
-.btn-equal {
-  background: linear-gradient(135deg, #2196f3, #1976d2);
-  color: white;
-  grid-column: span 2;
-}
-
-.btn-equal:hover {
-  background: linear-gradient(135deg, #42a5f5, #1e88e5);
-}
-
-.footer {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #fff;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.footer p {
-  margin: 5px 0;
 }
 ```
 
-## OUTPUT
-![Screenshot 2025-04-01 124052](https://github.com/user-attachments/assets/f6f7fc96-fca4-4999-844a-7f1ac9ca8fb6)
+App.jsx
 
+```
+import React, { useState } from "react";
+import "./App.css"; // You can put the styles in a CSS file or inline
+
+function Calculator() {
+  const [display, setDisplay] = useState("");
+
+  const press = (val) => {
+    setDisplay((prev) => prev + val);
+  };
+
+  const calc = () => {
+    try {
+      // Evaluate expression safely
+      // eslint-disable-next-line no-eval
+      setDisplay(eval(display).toString());
+    } catch (error) {
+      setDisplay("Error");
+    }
+  };
+
+  const clr = () => {
+    setDisplay("");
+  };
+
+  return (
+    <div className="calc">
+      <input id="display" value={display} readOnly />
+      <br />
+      <div>
+        <button onClick={() => press("1")}>1</button>
+        <button onClick={() => press("2")}>2</button>
+        <button onClick={() => press("3")}>3</button>
+        <button onClick={() => press("+")}>+</button>
+      </div>
+      <div>
+        <button onClick={() => press("4")}>4</button>
+        <button onClick={() => press("5")}>5</button>
+        <button onClick={() => press("6")}>6</button>
+        <button onClick={() => press("-")}>-</button>
+      </div>
+      <div>
+        <button onClick={() => press("7")}>7</button>
+        <button onClick={() => press("8")}>8</button>
+        <button onClick={() => press("9")}>9</button>
+        <button onClick={() => press("*")}>*</button>
+      </div>
+      <div>
+        <button onClick={clr}>C</button>
+        <button onClick={() => press("0")}>0</button>
+        <button onClick={calc}>=</button>
+        <button onClick={() => press("/")}>/</button>
+      </div>
+    </div>
+  );
+}
+
+export default Calculator;
+```
+## OUTPUT
+<img width="1909" height="1134" alt="image" src="https://github.com/user-attachments/assets/42f18524-2209-406f-b14d-c46b5e187298" />
+
+## RESULT
+The program for developing a simple calculator in React.js is executed successfully.
 
 ## RESULT
 The program for developing a simple calculator in React.js is executed successfully.
